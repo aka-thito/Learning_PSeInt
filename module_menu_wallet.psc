@@ -1,3 +1,37 @@
+Funcion saldo <- bank_deposit ( deposit, saldo )
+	
+	Escribir 'Ingrese el monto que desea depositar'
+	Leer deposit
+	
+	Si saldo = 0 Entonces
+		saldo = saldo + deposit
+		Escribir 'Su saldo es:' saldo
+	SiNo
+		saldo = saldo + deposit
+		Escribir 'Su saldo es:' saldo
+	Fin Si
+	
+Fin Funcion
+
+// hacer la funcion del deposito fue el desafio, la verdad no supe si estaba bien la condicional
+
+Funcion saldo <- with_money ( money_with, saldo )
+	
+	Escribir 'Ingrese el monto que desea retirar'
+	Leer money_with
+	
+	Si saldo >= money_with Entonces
+		
+		Escribir  'Retiro exitoso de:' money_with
+		saldo = saldo - money_with
+		Escribir 'Su nuevo saldo es:' saldo
+		
+	SiNo
+		Escribir  'Fondos insuficientes'
+	Fin Si
+	
+Fin Funcion
+
 Algoritmo Menu_Wallet
 	
 	// condicional simple/doble
@@ -6,10 +40,13 @@ Algoritmo Menu_Wallet
 	name = ''
 	menu = 0
 	auxiliar = 0
+	money_with = 0
+	deposit= 0
+	saldo = 100
 	
 	Escribir 'Ingrese su nombre de usuario (tarjeta)'
 	Leer name
-	Escribir  'BIENVENIDO/A: ' name 'Ingrese su clave'
+	Escribir  'BIENVENIDO/A: ' name ' Ingrese su clave'
 	Leer pasword_insert
 	
 	// Condicional anidado
@@ -39,11 +76,11 @@ Algoritmo Menu_Wallet
 	Segun menu Hacer
 		
 		1:
-			Escribir 'Su saldo actual es $0'
+			Escribir 'Su saldo actual es $' saldo
 		2:
-			Escribir '¿Cuanto dienro quiere depositar?'
+			saldo = bank_deposit(deposit, saldo)
 		3:
-			Escribir '¿Cuánto dinero quiere retirar?'
+			saldo = with_money(money_with, saldo)
 		4:
 			Escribir 'Vale, hasta la proxima!'
 		De Otro Modo:
